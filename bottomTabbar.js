@@ -24,7 +24,7 @@ const MyMusic = () => {
     <View style={{width: '100%', height: '100%', backgroundColor: 'red'}} />
   );
 };
-const Tabbar = createMaterialBottomTabNavigator({
+const Tabbar =  createMaterialBottomTabNavigator({
   BottomTabBar: {
     screen: BottomTabBar,
     navigationOptions: {
@@ -74,6 +74,7 @@ const Tabbar = createMaterialBottomTabNavigator({
   },
 });
 
+
 export default createAppContainer(Tabbar);
 
 const styles = StyleSheet.create({
@@ -87,3 +88,5 @@ const styles = StyleSheet.create({
     //marginLeft: 10,
   },
 });
+
+

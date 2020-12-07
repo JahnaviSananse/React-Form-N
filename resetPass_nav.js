@@ -43,7 +43,7 @@ const FirstPage = () => {
           height: '65%',
           width: '100%',
 
-          backgroundColor: 'pink',
+          backgroundColor: 'white',
         }}>
         <Text
           style={{
@@ -91,9 +91,9 @@ const FirstPage = () => {
 
   const renderTabs = () => {
     return (
-      <View style={{backgroundColor: 'red'}}>
+      <View style={{backgroundColor: 'white'}}>
         <View
-          style={{backgroundColor: 'green', height: 90, flexDirection: 'row'}}>
+          style={{backgroundColor: 'white', height: 90, flexDirection: 'row'}}>
           <Image
             style={{top: 10, marginLeft: 65}}
             source={require('./boy.png')}
@@ -105,7 +105,7 @@ const FirstPage = () => {
           style={{
             height: 50,
             flexDirection: 'row',
-            backgroundColor: 'yellow',
+            backgroundColor: 'white',
             alignSelf: 'center',
           }}>
           <Text style={{fontSize: 30, padding: 5}}>Reset Password</Text>
@@ -118,7 +118,7 @@ const FirstPage = () => {
       style={{
         //marginTop: 10,
         height: '100%',
-        backgroundColor: 'grey',
+        backgroundColor: 'white',
         //justifyContent: 'center',
       }}>
       {renderTabs()}
@@ -138,6 +138,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     marginLeft: 10,
+    borderColor: 'black',
+    borderWidth: 1.5,
   },
   loginButton: {
     width: '60%',

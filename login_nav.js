@@ -33,9 +33,8 @@ const FirstPage = ({navigation}) => {
     } else if (pass.length < 5) {
       isValidate = false;
       message = 'Please add at least 5 charachter.';
-    }
-    else{
-        return true;
+    } else {
+      return true;
     }
 
     if (isValidate === false) {
@@ -108,12 +107,9 @@ const FirstPage = ({navigation}) => {
         <View style={{alignSelf: 'flex-end'}}>
           <TouchableOpacity
             onPress={() => {
-              if (validateForgot()) {
-                navigation.navigate('fogotpass_nav');
-                
-              }
+              navigation.navigate('fogotpass_nav');
             }}>
-            <Text style={{color: 'red', marginRight: 30, marginTop: 15}}>
+            <Text style={{color: 'red', marginRight: 30, marginTop: 10}}>
               {' '}
               Forgot Password?{' '}
             </Text>
@@ -121,7 +117,12 @@ const FirstPage = ({navigation}) => {
         </View>
 
         <View style={styles.loginButton}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              if (validateForgot()) {
+                navigation.navigate('third');
+              }
+            }}>
             <Text style={styles.loginText}> LOG IN </Text>
           </TouchableOpacity>
         </View>
@@ -138,7 +139,7 @@ const FirstPage = ({navigation}) => {
     return (
       <View style={{backgroundColor: 'white', height: '27%'}}>
         <View
-          style={{backgroundColor: 'white', height: 70, flexDirection: 'row'}}>
+          style={{backgroundColor: 'white', height: 90, flexDirection: 'row'}}>
           <Image
             style={{top: 10, marginLeft: 65}}
             source={require('./boy.png')}
@@ -147,7 +148,7 @@ const FirstPage = ({navigation}) => {
         </View>
         <View
           style={{
-            height: 50,
+            height: 60,
             marginTop: 35,
             flexDirection: 'row',
             backgroundColor: 'white',
@@ -161,7 +162,7 @@ const FirstPage = ({navigation}) => {
   return (
     <SafeAreaView
       style={{
-        height: '90%',
+        height: '100%',
         backgroundColor: 'white',
         //justifyContent: 'center',
       }}>
@@ -186,17 +187,17 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   loginButton: {
-    width: '60%',
+    width: '40%',
     marginTop: 20,
-    marginLeft: 40,
+    marginLeft: 90,
     left: 40,
     backgroundColor: 'green',
     borderRadius: 10,
   },
   loginGuest: {
-    width: '60%',
+    width: '40%',
     marginTop: 10,
-    marginLeft: 40,
+    marginLeft: 90,
     left: 40,
     backgroundColor: 'white',
     borderColor: 'green',
@@ -209,7 +210,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
     padding: 10,
-    left: 80,
+    left: 35,
   },
   guestText: {
     height: 50,
@@ -217,6 +218,6 @@ const styles = StyleSheet.create({
     color: 'green',
     fontWeight: 'bold',
     padding: 10,
-    left: 70,
+    left: 30,
   },
 });
