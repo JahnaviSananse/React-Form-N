@@ -27,6 +27,7 @@
     "react-navigation": "^4.4.3",
     "react-navigation-material-bottom-tabs": "^2.3.3",
     "react-navigation-stack": "^2.10.1",
+    "react-redux": "^7.2.2",
     "rn-bottom-drawer": "^1.4.3"
   },
   "devDependencies": {

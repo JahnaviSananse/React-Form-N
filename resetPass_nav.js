@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const FirstPage = () => {
+const resetPass_nav = () => {
     const [pass, setPass] = useState('');
     const [cpass, setCpass] = useState('');
 
@@ -30,6 +30,9 @@ const FirstPage = () => {
         } else if (pass !== cpass) {
           message = 'password and confirm password must be same!';
         }
+        else{
+          return true;
+        }
     
         if (isValidate === false) {
           alert(message);
@@ -38,20 +41,9 @@ const FirstPage = () => {
 
   const renderSignup = () => {
     return (
-      <View
-        style={{
-          height: '65%',
-          width: '100%',
-
-          backgroundColor: 'white',
-        }}>
+      <View>
         <Text
-          style={{
-            marginTop: 50,
-            marginLeft: 9,
-            fontSize: 20,
-            marginBottom: 10,
-          }}>
+          style={styles.text}>
           {' '}
           New Password :{' '}
         </Text>
@@ -62,12 +54,7 @@ const FirstPage = () => {
         placeholder={' Enter Here '} style={styles.textinput} />
 
         <Text
-          style={{
-            marginTop: 20,
-            marginLeft: 9,
-            fontSize: 20,
-            marginBottom: 10,
-          }}>
+          style={styles.text}>
           {' '}
           Confirm Password :{' '}
         </Text>
@@ -79,8 +66,8 @@ const FirstPage = () => {
 
         <View style={styles.loginButton}>
           <TouchableOpacity onPress={() => {
-              validateReset()
-              //alert("Reset Successfully")
+              if(validateReset()){
+              alert("Reset Successfully")}
               }}>
             <Text style={styles.loginText}> SAVE </Text>
           </TouchableOpacity>
@@ -91,24 +78,19 @@ const FirstPage = () => {
 
   const renderTabs = () => {
     return (
-      <View style={{backgroundColor: 'white'}}>
+      <View>
         <View
-          style={{backgroundColor: 'white', height: 90, flexDirection: 'row'}}>
+          style={styles.headView}>
           <Image
-            style={{top: 10, marginLeft: 65}}
+            style={styles.img}
             source={require('./boy.png')}
           />
-          <Text style={{fontSize: 40, marginTop: 15}}> LoanTack </Text>
+          <Text style={styles.loanText}> LoanTack </Text>
         </View>
 
         <View
-          style={{
-            height: 50,
-            flexDirection: 'row',
-            backgroundColor: 'white',
-            alignSelf: 'center',
-          }}>
-          <Text style={{fontSize: 30, padding: 5}}>Reset Password</Text>
+          style={styles.resetView}>
+          <Text style={styles.resetText}>Reset Password</Text>
         </View>
       </View>
     );
@@ -127,7 +109,7 @@ const FirstPage = () => {
   );
 };
 
-export default FirstPage;
+export default resetPass_nav;
 
 const styles = StyleSheet.create({
   textinput: {
@@ -141,6 +123,28 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1.5,
   },
+  img:{
+    top: 10, 
+    marginLeft: 65
+  },
+  headView:{
+    backgroundColor: 'white', 
+    height: 90, 
+    flexDirection: 'row'
+  },
+  loanText:{
+    fontSize: 40, 
+    marginTop: 15
+  },
+  resetView:{
+    height: 50,
+    backgroundColor: 'white',
+    alignSelf: 'center',
+  },
+  resetText:{
+    fontSize: 30, 
+    padding: 5
+  },
   loginButton: {
     width: '60%',
     marginTop: '30%',
@@ -148,6 +152,12 @@ const styles = StyleSheet.create({
     left: 40,
     backgroundColor: 'green',
     borderRadius: 10,
+  },
+  text:{
+    marginTop: 20,
+    marginLeft: 9,
+    fontSize: 20,
+    marginBottom: 10,
   },
 
   loginText: {

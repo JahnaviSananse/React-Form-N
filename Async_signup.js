@@ -10,12 +10,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const login_nav = ({navigation}) => {
+const Async_signup = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [fname, setFname] = useState('');
 
-  const validateForgot = () => {
+  const validateSignup = () => {
     let isValidate = false;
     let mailFormat = new RegExp(
       /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i,
@@ -44,9 +44,20 @@ const login_nav = ({navigation}) => {
 
   const renderSignup = () => {
     return (
-      <View>
+      <View
+        style={{
+          height: '75%',
+          width: '100%',
+
+          backgroundColor: 'white',
+        }}>
         <Text
-          style={styles.headText}>
+          style={{
+            marginTop: 10,
+            marginLeft: 9,
+            fontSize: 18,
+            marginBottom: 5,
+          }}>
           {' '}
           Full Name :{' '}
         </Text>
@@ -59,7 +70,12 @@ const login_nav = ({navigation}) => {
         />
 
         <Text
-          style={styles.headText}>
+          style={{
+            marginTop: 10,
+            marginLeft: 9,
+            fontSize: 18,
+            marginBottom: 5,
+          }}>
           {' '}
           Email Address :{' '}
         </Text>
@@ -72,7 +88,12 @@ const login_nav = ({navigation}) => {
         />
 
         <Text
-          style={styles.headText}>
+          style={{
+            marginTop: 10,
+            marginLeft: 9,
+            fontSize: 18,
+            marginBottom: 5,
+          }}>
           {' '}
           Password :{' '}
         </Text>
@@ -83,30 +104,26 @@ const login_nav = ({navigation}) => {
           placeholder={' Enter Here '}
           style={styles.textinput}
         />
-        <View style={{alignSelf: 'flex-end'}}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('fogotpass_nav');
-            }}>
-            <Text style={styles.forgotPass}>
+        {/* <View style={{alignSelf: 'flex-end'}}>
+         
+            <Text style={{color: 'red', marginRight: 30, marginTop: 10}}>
               {' '}
               Forgot Password?{' '}
             </Text>
-          </TouchableOpacity>
-        </View>
+        </View> */}
 
-        <View style={styles.loginButton}>
-          <TouchableOpacity
-            onPress={() => {
-              if (validateForgot()) {
-                navigation.navigate('NavIndex');
-              }
-            }}>
+        {/* <View style={styles.loginButton}>
+          <TouchableOpacity>
             <Text style={styles.loginText}> LOG IN </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
         <View style={styles.loginGuest}>
-          <TouchableOpacity>
+          <TouchableOpacity
+           onPress={() => {
+            if (validateSignup()) {
+              navigation.navigate('Async_login');
+            }
+          }}>
             <Text style={styles.guestText}> SIGN UP </Text>
           </TouchableOpacity>
         </View>
@@ -116,18 +133,24 @@ const login_nav = ({navigation}) => {
 
   const renderTabs = () => {
     return (
-      <View>
+      <View style={{backgroundColor: 'white', height: '27%'}}>
         <View
-          style={styles.headView}>
+          style={{backgroundColor: 'white', height: 90, flexDirection: 'row'}}>
           <Image
-            style={styles.img}
+            style={{top: 10, marginLeft: 65}}
             source={require('./boy.png')}
           />
-          <Text style={styles.loanText}> LoanTack </Text>
+          <Text style={{fontSize: 40, marginTop: 15}}> LoanTack </Text>
         </View>
         <View
-          style={styles.signupView}>
-          <Text style={styles.signupText}>SIGN-UP</Text>
+          style={{
+            height: 60,
+            marginTop: 35,
+            flexDirection: 'row',
+            backgroundColor: 'white',
+            alignSelf: 'center',
+          }}>
+          <Text style={{fontSize: 30, padding: 5}}>SIGN-UP</Text>
         </View>
       </View>
     );
@@ -145,7 +168,7 @@ const login_nav = ({navigation}) => {
   );
 };
 
-export default login_nav;
+export default Async_signup;
 
 const styles = StyleSheet.create({
   textinput: {
@@ -158,25 +181,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     borderColor: 'black',
     borderWidth: 2,
-  },
-  loanText:{ 
-    fontSize: 40, 
-    marginTop: 15
-  },
-  headView:{
-    backgroundColor: 'white', 
-    height: 90, 
-    flexDirection: 'row'
-  },
-  img:{
-    top: 10, 
-    marginLeft: 65
-  },
-  headText:{
-    marginTop: 10,
-    marginLeft: 9,
-    fontSize: 18,
-    marginBottom: 5,
   },
   loginButton: {
     width: '40%',
@@ -212,20 +216,4 @@ const styles = StyleSheet.create({
     padding: 10,
     left: 30,
   },
-  forgotPass:{
-    color: 'red', 
-    marginRight: 30, 
-    marginTop: 10
-  },
-  signupView:{
-    height: 60,
-    marginTop: 35,
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    alignSelf: 'center',
-  },
-  signupText:{
-    fontSize: 30, 
-    padding: 5
-  }
 });
